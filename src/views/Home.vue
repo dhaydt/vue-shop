@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <navBar />
     <hero></hero>
     <a href="#products">shop</a>
     <products id="products"></products>
