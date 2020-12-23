@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>home</h1>
     <hero></hero>
     <button class="btn btn-primary">click</button>
   </div>
