@@ -1,11 +1,17 @@
 <template>
     <div class="admin">
         <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
+            <a id="show-sidebar" @click="closeMenu" href="#" class="btn btn-sm btn-dark menu">
+                <i class="fas fa-bars"></i>
+            </a>
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <!-- sidebar-brand  -->
                 <div class="sidebar-item sidebar-brand">
                     <a href="#">pro sidebar</a>
+                    <div id="close-sidebar" @click="closeMenu">
+                        <i class="fas fa-times"></i>
+                    </div>
                 </div>
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header d-flex flex-nowrap">
@@ -291,10 +297,18 @@
         name: "Admin",
         components: {
             
+        },
+        methods: {
+            closeMenu(){
+                $(".page-wrapper").toggleClass("toggled");
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+.menu{
+    margin-top: 20px;
+    margin-right: 100%;
+}
 </style>

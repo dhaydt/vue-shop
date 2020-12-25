@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <router-link to="/about" class="nav-link">About</router-link>
                 </li>
+                <li class="nav-item">
+                    <router-link to="/admin" class="nav-link">Admin</router-link>
+                </li>
                 
                 </ul>
                 <Menu mode="horizontal" active-name="1">
