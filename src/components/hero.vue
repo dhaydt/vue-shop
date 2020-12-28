@@ -34,5 +34,7 @@
     };
 </script>
 <style scooped>
-
+body {
+color: white;
+}
 </style>
