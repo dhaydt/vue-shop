@@ -14,5 +14,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    body {
+        color: black;
+    }
 </style>
