@@ -19,8 +19,8 @@
                         <img class="img-responsive img-rounded" src="img/user.png" alt="User picture">
                     </div>
                     <div class="user-info">
-                        <span class="user-name">Jhon
-                            <strong>Smith</strong>
+                        <span class="user-name">Dayat
+                            <strong>Hidayat</strong>
                         </span>
                         <span class="user-role">Administrator</span>
                         <span class="user-status">
@@ -48,60 +48,36 @@
                         <li class="header-menu">
                             <span>General</span>
                         </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-tachometer-alt"></i>
-                                <span class="menu-text">Dashboard</span>
-                                <span class="badge badge-pill badge-warning">New</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Dashboard 1
-                                            <span class="badge badge-pill badge-success">Pro</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Dashboard 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Dashboard 3</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="far fa-gem"></i>
-                                <span class="menu-text">Components</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">General</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Panels</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Tables</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Icons</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Forms</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        
+
                         <li>
                             <router-link to="/admin/overview">
                                 <i class="fa fa-book"></i>
                                 <span class="menu-text">Overview</span>
-                                <span class="badge badge-pill badge-primary">Beta</span>
+                                <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+                            </router-link>
+                        </li>
+
+                        <li>
+                            <router-link to="/admin/products">
+                                <i class="fab fa-shopify"></i>
+                                <span class="menu-text">Products</span>
+                                <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+                            </router-link>
+                        </li>
+                        
+                        <li>
+                            <router-link to="/admin/orders">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span class="menu-text">Orders</span>
+                                <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+                            </router-link>
+                        </li>
+                        
+                        <li>
+                            <router-link to="/admin/logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span class="menu-text">Logout</span>
+                                <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
                             </router-link>
                         </li>
                         

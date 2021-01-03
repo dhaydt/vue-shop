@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Admin from '../views/Admin.vue'
 import overview from '../views/overview.vue'
+import products from '../views/products.vue'
+import orders from '../views/orders.vue'
 
 Vue.use(Router)
 
@@ -24,7 +26,18 @@ export default new Router({
         path: 'overview',
         name: 'Overview',
         component: overview
-      }]
+      },
+      {
+        path: 'products',
+        name: 'products',
+        component: products
+      },
+      {
+        path: 'orders',
+        name: 'orders',
+        component: orders
+      },
+      ]
     },
     {
       path: '/about',
