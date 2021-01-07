@@ -5,18 +5,18 @@
                 <div class="col-md-5">
                     <div class="hero-content">
                         <h1 class="hero-title">
-                            Dayat'S Shop Development
+                            Rumah Jamur Tuty Bebeb
                         </h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, laudantium quia voluptatem a corporis praesentium vel architecto reiciendis suscipit animi omnis commodi et amet voluptatum minima voluptatibus, nulla voluptates quisquam!</p>
                         <div class="hero-btn mt-5">
                             <button class="btn custom-btn btn-info mr-4">Explore</button>
-                            <button class="btn custom-btn btn-outline-secondary">Our Products</button>
+                            <button class="btn custom-btn btn-outline-secondary">Our Farm</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="graphic">
-                        <img src="/img/svg/graphic.svg" alt="">
+                        <img src="/img/svg/mushroom.png" width="400" alt="">
                     </div>
                 </div>
             </div>

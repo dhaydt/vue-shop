@@ -1,18 +1,11 @@
 <template>
-    <div class="login">
+    <div class="signup">
         <!-- Modal -->
-        <div class="modal fade" id="login" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="signup" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                            <a class="nav-link active" href="#login">Active</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" data-target="#signup">Link</a>
-                            </li>
-                        </ul>
+                        <h5 class="modal-title" id="signup">Register</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -30,28 +23,24 @@
                                 <input type="password" class="form-control" id="password" placeholder="Your Password">
                             </div>
                         </div>
-                        Not Registered? <a class="btn btn-outline-success btn-sm" type="button" data-toggle="modal" data-target="#signup">Register Here!</a>
+                        Already Registered? <a class="btn btn-outline-success btn-sm" type="button" data-toggle="modal" data-target="#signup">Login Here!</a>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-primary">Register</button>
                     </div>
                 </div>
             </div>
         </div>
-        <signup></signup>
     </div>
 </template>
 
 <script>
-    import firebase from "../firebase.js"
-    import signup from "./signup.vue"
     export default {
         name: 'login',
         props:{
             msg: String
-        },
-        components: {signup}
+        }
     }
 </script>
 
