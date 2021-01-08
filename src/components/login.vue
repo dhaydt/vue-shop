@@ -23,14 +23,35 @@
                                 <b-form-input id="password" v-model="password" trim></b-form-input>
                             </b-form-group>
                         </b-card-body>
-                        <modal-footer>
-                            <b-button variant="outline-primary">close</b-button>
-                            <b-button variant="primary">Login</b-button>
-                        </modal-footer>
-
+                        <div class="modal-footer">
+                            <b-button variant="primary" @click="login">Login</b-button>
+                        </div>
                     </b-tab>
 
-                    <b-tab title="Sign-Up"><p>I'm the second tab</p></b-tab>
+                    <b-tab title="Sign-Up">
+                        <b-card-body>
+                            <b-form-group
+                                id="email"
+                                description="Example: user@gmail.com"
+                                label="E-mail"
+                                label-for="email"
+                                valid-feedback="Thank you!"
+                                >
+                                <b-form-input id="email" v-model="email" trim></b-form-input>
+                            </b-form-group>
+                            <b-form-group
+                                id="password"
+                                label="Password"
+                                label-for="password"
+                                valid-feedback="Thank you!"
+                                >
+                                <b-form-input id="password" v-model="password" trim></b-form-input>
+                            </b-form-group>
+                        </b-card-body>
+                        <div class="modal-footer">
+                            <b-button variant="primary" @click="login">Sign Up</b-button>
+                        </div>
+                    </b-tab>
                 </b-tabs>
             </div>
         </b-modal>
@@ -66,6 +87,9 @@
                         }
                         console.log(error);
                     });
+            },
+            login(){
+                console.log('login')
             }
         },
     }
