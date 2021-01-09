@@ -2,8 +2,9 @@
     <div class="login">
         <b-modal id="login" hide-header hide-footer>
             <div>
-                <b-tabs content-class="mt-3" justified>
+                <b-tabs content-class="mt-3" justified pills card>
                     <b-tab title="Login" active>
+                        <h5 class="text-center">Login</h5>
                         <b-card-body>
                             <b-form-group
                                 id="logemail"
@@ -34,8 +35,6 @@
                             <b-form-group
                                 id="name"
                                 label="Name"
-                                label-for="name"
-                                valid-feedback="Thank you!"
                                 >
                                 <b-form-input id="name" v-model="name" placeholder="Masukan Nama" trim></b-form-input>
                             </b-form-group>
@@ -43,16 +42,12 @@
                                 id="email"
                                 description="Example: user@gmail.com"
                                 label="E-mail"
-                                label-for="email"
-                                valid-feedback="Thank you!"
                                 >
                                 <b-form-input id="email" v-model="email" placeholder="Masukan email" trim></b-form-input>
                             </b-form-group>
                             <b-form-group
                                 id="password"
                                 label="Password"
-                                label-for="password"
-                                valid-feedback="Thank you!"
                                 >
                                 <b-form-input id="password" v-model="password" placeholder="Masukan password" trim></b-form-input>
                             </b-form-group>
@@ -85,6 +80,9 @@
         methods:{
             register(){
                 fb.auth().createUserWithEmailAndPassword(this.email, this.password)
+                    .then((user) => {
+                        this.$router.replace('admin');
+                    })
                     .catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;

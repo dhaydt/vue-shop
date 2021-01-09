@@ -74,11 +74,11 @@
                         </li>
                         
                         <li>
-                            <router-link to="/admin/logout">
+                            <a type="button" @click="logout()">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span class="menu-text">Logout</span>
                                 <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
-                            </router-link>
+                            </a>
                         </li>
                         
                     </ul>
@@ -238,6 +238,7 @@
 </template>
 
 <script>
+    import {fb} from "../firebase"
     export default {
         name: "Admin",
         components: {
@@ -246,6 +247,15 @@
         methods: {
             closeMenu(){
                 $(".page-wrapper").toggleClass("toggled");
+            },
+            logout(){
+                fb.auth().signOut()
+                .then(() => {
+                    this.$router.replace('/')
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
             }
         }
     }
