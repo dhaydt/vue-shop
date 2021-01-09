@@ -6,21 +6,21 @@
                     <b-tab title="Login" active>
                         <b-card-body>
                             <b-form-group
-                                id="email"
+                                id="logemail"
                                 description="Example: user@gmail.com"
                                 label="E-mail"
                                 label-for="email"
                                 valid-feedback="Thank you!"
                                 >
-                                <b-form-input id="email" v-model="email" trim></b-form-input>
+                                <b-form-input id="logemail" placeholder="email" trim></b-form-input>
                             </b-form-group>
                             <b-form-group
-                                id="password"
+                                id="logpassword"
                                 label="Password"
                                 label-for="password"
                                 valid-feedback="Thank you!"
                                 >
-                                <b-form-input id="password" v-model="password" trim></b-form-input>
+                                <b-form-input id="logpassword" placeholder="******" trim></b-form-input>
                             </b-form-group>
                         </b-card-body>
                         <div class="modal-footer">
@@ -29,7 +29,16 @@
                     </b-tab>
 
                     <b-tab title="Sign-Up">
+                        <h5 class="text-center">Buat Akun</h5>
                         <b-card-body>
+                            <b-form-group
+                                id="name"
+                                label="Name"
+                                label-for="name"
+                                valid-feedback="Thank you!"
+                                >
+                                <b-form-input id="name" v-model="name" placeholder="Masukan Nama" trim></b-form-input>
+                            </b-form-group>
                             <b-form-group
                                 id="email"
                                 description="Example: user@gmail.com"
@@ -37,7 +46,7 @@
                                 label-for="email"
                                 valid-feedback="Thank you!"
                                 >
-                                <b-form-input id="email" v-model="email" trim></b-form-input>
+                                <b-form-input id="email" v-model="email" placeholder="Masukan email" trim></b-form-input>
                             </b-form-group>
                             <b-form-group
                                 id="password"
@@ -45,11 +54,11 @@
                                 label-for="password"
                                 valid-feedback="Thank you!"
                                 >
-                                <b-form-input id="password" v-model="password" trim></b-form-input>
+                                <b-form-input id="password" v-model="password" placeholder="Masukan password" trim></b-form-input>
                             </b-form-group>
                         </b-card-body>
                         <div class="modal-footer">
-                            <b-button variant="primary" @click="login">Sign Up</b-button>
+                            <b-button variant="primary" @click="register">Register</b-button>
                         </div>
                     </b-tab>
                 </b-tabs>
@@ -59,7 +68,7 @@
 </template>
 
 <script>
-    import firebase from "../firebase.js"
+    import {fb} from "../firebase.js"
     export default {
         name: 'login',
         props:{
@@ -75,18 +84,18 @@
 
         methods:{
             register(){
-                firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+                fb.auth().createUserWithEmailAndPassword(this.email, this.password)
                     .catch(function(error) {
-                        //handle error
-                        var errorCode = error.code;
-                        var errorMessage = error.message;
-                        if (errorCode == 'auth/weak-password') {
-                            alert('Password Lemah');
-                        } else {
-                            alert(errorMessage);
-                        }
-                        console.log(error);
-                    });
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if (errorCode == 'auth/weak-password') {
+                    alert('The password is too weak.');
+                } else {
+                    alert(errorMessage);
+                }
+                console.log(error);
+                });
             },
             login(){
                 console.log('login')
