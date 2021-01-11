@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import jQuery from 'jquery';
+import {fb} from './firebase'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -13,14 +14,23 @@ import 'popper.js';
 import './assets/app.scss'
 
 window.$ = window.jQuery = jQuery;
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 Vue.component('navBar', require('./components/navBar.vue').default);
 Vue.use(ViewUI);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+let app = '';
+fb.auth().onAuthStateChanged(function(user) {
+  if(!app){
+    new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+
+});
+
+
+
