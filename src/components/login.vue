@@ -7,25 +7,21 @@
                         <h5 class="text-center">Login</h5>
                         <b-card-body>
                             <b-form-group
-                                id="logemail"
+                                id="email1"
                                 description="Example: user@gmail.com"
                                 label="E-mail"
-                                label-for="email"
-                                valid-feedback="Thank you!"
                                 >
-                                <b-form-input id="logemail" placeholder="email" trim></b-form-input>
+                                <b-form-input id="email1" v-model="email" placeholder="email" trim></b-form-input>
                             </b-form-group>
                             <b-form-group
-                                id="logpassword"
+                                id="password1"
                                 label="Password"
-                                label-for="password"
-                                valid-feedback="Thank you!"
                                 >
-                                <b-form-input id="logpassword" placeholder="******" trim></b-form-input>
+                                <b-form-input id="password1" v-model="password" placeholder="******" trim></b-form-input>
                             </b-form-group>
                         </b-card-body>
                         <div class="modal-footer">
-                            <b-button variant="primary" @click="login">Login</b-button>
+                            <b-button variant="primary" @click="login()">Login</b-button>
                         </div>
                     </b-tab>
 
@@ -78,6 +74,25 @@
         },
 
         methods:{
+            login(){
+                fb.auth().signInWithEmailAndPassword(this.email, this.password)
+                    .then(() => {
+                        this.$router.replace('admin');
+                    })
+                    .catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    if (errorCode === 'auth/wrong-password') {
+                    alert('Wrong password.');
+                    } else {
+                    alert(errorMessage);
+                    }
+                    console.log(error);
+                    });
+
+            },
+
             register(){
                 fb.auth().createUserWithEmailAndPassword(this.email, this.password)
                     .then((user) => {
@@ -95,9 +110,6 @@
                 console.log(error);
                 });
             },
-            login(){
-                console.log('login')
-            }
         },
     }
 </script>
