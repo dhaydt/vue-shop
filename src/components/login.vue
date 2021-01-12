@@ -17,7 +17,7 @@
                                 id="password1"
                                 label="Password"
                                 >
-                                <b-form-input id="password1" v-model="password" placeholder="******" trim></b-form-input>
+                                <b-form-input id="password1" @keyup.enter="login()" v-model="password" placeholder="******" trim></b-form-input>
                             </b-form-group>
                         </b-card-body>
                         <div class="modal-footer">
