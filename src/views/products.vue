@@ -13,7 +13,6 @@
                 </div>
             </div>
             <br>
-
             <h3>CRUD in Firebase</h3>
             <div class="product-test">
                 <div class="form-group">
@@ -26,6 +25,24 @@
                     <button @click="saveData" class="btn btn-primary">Save Product</button>
                 </div>
             </div>
+
+            <br>
+            <h3>Our Product</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="product in products">
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
@@ -40,6 +57,7 @@
 
         data(){
             return {
+                products: [],
                 product: {
                     name:null,
                     price:null
@@ -49,13 +67,26 @@
         methods: {
             saveData(){
                 db.collection("products").add(this.product)
-                .then(function(docRef) {
+                .then((docRef) => {
                     console.log("Document written with ID: ", docRef.id);
+                    this.reset();
                 })
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
                 });
-            }
+            },
+            reset(){
+                Object.assign(this.$data, this.$options.data.apply(this));
+            },
+        },
+        created(){
+            db.collection("products").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    // console.log(doc.id, " => ", doc.data());
+                    this.products.push(doc.data());
+                });
+            });
         }
     }
 </script>
