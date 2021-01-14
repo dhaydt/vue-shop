@@ -65,28 +65,31 @@
             }
         },
         methods: {
-            saveData(){
-                db.collection("products").add(this.product)
-                .then((docRef) => {
-                    console.log("Document written with ID: ", docRef.id);
-                    this.reset();
-                })
-                .catch(function(error) {
-                    console.error("Error adding document: ", error);
-                });
-            },
-            reset(){
-                Object.assign(this.$data, this.$options.data.apply(this));
-            },
-        },
-        created(){
-            db.collection("products").get().then((querySnapshot) => {
+            readData(){
+                db.collection("products").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     // doc.data() is never undefined for query doc snapshots
                     // console.log(doc.id, " => ", doc.data());
                     this.products.push(doc.data());
                 });
             });
+            },
+            saveData(){
+                db.collection("products").add(this.product)
+                .then((docRef) => {
+                    console.log("Document written with ID: ", docRef.id);
+                    this.readData();
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+            },
+            reset(){
+                // Object.assign(this.$data, this.$options.data.apply(this));
+            },
+        },
+        created(){
+            this.readData();
         }
     }
 </script>
