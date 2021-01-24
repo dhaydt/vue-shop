@@ -72,7 +72,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button @click="updateProduct()" type="button" class="btn btn-primary">Save changes</button>
             </div>
             </div>
         </div>
@@ -95,14 +95,30 @@
                 product: {
                     name:null,
                     price:null
-                }
+                },
+                activeItem: null
             }
         },
         methods: {
+            updateProduct(){
+
+                db.collection("products").doc(this.activeItem).update(this.product)
+                .then(function() {
+                    $('#edit').modal('hide');
+                    console.log("Document successfully updated!");
+                })
+                .catch(function(error) {
+                    // The document probably doesn't exist.
+                    console.error("Error updating document: ", error);
+                });
+            },
+
             editProduct(product){
                 $('#edit').modal('show');
                 this.product = product.data();
+                this.activeItem = product.id;
             },
+
             deleteProduct(doc){
                 if(confirm('Anda yakin ingin dihapus ?')){
                     db.collection("products").doc(doc).delete().then(function() {
@@ -114,6 +130,7 @@
 
                 }
             },
+
             readData(){
                 db.collection("products").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
